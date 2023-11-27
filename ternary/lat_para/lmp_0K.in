@@ -23,6 +23,9 @@ create_box      5 mybox
 
 create_atoms    1 box
 
+set type 1 type/ratio 2 0.3333 13424
+set type 1 type/ratio 4 0.5 38456
+
 # ------------------- FIELD DEFINE -----------------------------
 pair_style        mlip mlip.ini
 pair_coeff        * *

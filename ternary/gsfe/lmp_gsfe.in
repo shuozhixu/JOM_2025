@@ -1,4 +1,4 @@
-#This is the file to calculate the <112> GSFE curve. Along this curve, there are 101*20 data points. orient [1-10] [11-2] [111], x, y, z
+#This is the file to calculate the <111> GSFE curve. Along this curve, there are 101 data points. orient [11-2] [111] [1-10], x, y, z
 
 #shell   mkdir      dump
 
@@ -10,11 +10,29 @@ units           metal
 dimension	3
 boundary        p p s
 atom_style      atomic
-read_data	data.CoCrNi_gsfe_random       ######variable
+
+# ------------------- ATOM DEFINE ------------------------------
+
+variable        xl equal 0
+variable        xh equal 1
+variable        yl equal 0
+variable        yh equal 1
+variable        zl equal 0
+variable        zh equal 30
+
+lattice         bcc 3.3 orient x 1 1 -2 orient y 1 1 1 orient z 1 -1 0
+region          mybox block ${xl} ${xh} ${yl} ${yh} ${zl} ${zh}
+
+create_box      5 mybox
+
+create_atoms    1 box
+
+set type 1 type/ratio 2 0.3333 13424
+set type 1 type/ratio 4 0.5 38456
 
 # ------------------- FIELD DEFINE -----------------------------
-pair_style      eam/alloy
-pair_coeff      * * CoCrNi.lammps.eam Ni Co Cr 
+pair_style        mlip mlip.ini
+pair_coeff        * *
 
 neighbor        0.3     bin
 neigh_modify    delay   10
@@ -38,21 +56,24 @@ group		lobound region lobound
 group		boundary union lobound upbound
 group		mobile subtract all boundary
 
-region		upper block INF INF INF INF ${zmid} INF units box      #variable
-region		lower block INF INF INF INF INF ${zmid} units box      #variable
+variable        latparam equal 3.3             #variable
+
+variable        d equal 1
+variable        mid equal ${zmid}+${latparam}/sqrt(2.)*(${d}-10)
+
+region		upper block INF INF INF INF ${mid} INF units box      #variable
+region		lower block INF INF INF INF INF ${mid} units box      #variable
 
 group		top region upper
 group		bot region lower
 
-variable        Nslip equal 30                   #the number of periods
+variable        Nslip equal 1                   #the number of periods
 variable        stepn equal 100
 variable        stepm equal ${Nslip}*${stepn}+1
 
-variable        latparam equal 3.5564             #variable
-
 variable        area equal lx*ly
 
-variable        disp equal (${latparam}*sqrt(6)/2)/${stepn}
+variable        disp equal (${latparam}*sqrt(3)/2)/${stepn}
 
 displace_atoms  bot move 0 ${disp} 0 units box
 
