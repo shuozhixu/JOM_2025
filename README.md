@@ -1,75 +1,65 @@
-# Multi-principal element alloys
+# Unstable stacking fault energies in refractory random alloys
 
 ## Foreword
 
-The purpose of this project is to calculate the basic structural parameters (including lattice parameter and elastic constants), and generalized stacking fault energies (GSFE) of four equal-molar multi-principal element alloys (MPEAs). The effects of chemical short-range order (CSRO) will be considered.
+The purpose of this project is to calculate the unstable stacking fault energies (USFEs) of 10 ternaries and 990 binaries. All alloys have a body-centered cubic (BCC) lattice. For each alloy, we need to run 20 LAMMPS simulations. Therefore, in total 20,000 LAMMPS simulations are needed.
 
-Please read the following journal articles to understand how the aforementioned material properties can be calculated.
+The 10 ternaries are listed in Table 1 of [this paper](https://doi.org/10.1016/j.jallcom.2023.170556).
+
+The 990 binaries include
+
+- 99 binaries based on Mo<sub>_x_</sub>Nb<sub>_1-x_</sub>, where _x_ varies from 0.01 to 0.99
+- other combinations of metals, including MoTa, MoV, MoW, NbTa, NbV, NbW, TaV, TaW, and VW
+
+Please read the following journal articles to understand how the generalized stacking fault energy (GSFE) curves and their peak values (i.e., USFEs) can be calculated in BCC metals and alloys.
 
 \[Elemental materials\]:
 
-- Xiaowang Wang, Shuozhi Xu, Wu-Rong Jian, Xiang-Guo Li, Yanqing Su, Irene J. Beyerlein, [Generalized stacking fault energies and Peierls stresses in refractory body-centered cubic metals from machine learning-based interatomic potentials,](http://dx.doi.org/10.1016/j.commatsci.2021.110364) Comput. Mater. Sci. 192 (2021) 110364
-- Yanqing Su, Shuozhi Xu, Irene J. Beyerlein, [Density functional theory calculations of generalized stacking fault energy surfaces for eight face-centered cubic transition metals](http://dx.doi.org/10.1063/1.5115282), J. Appl. Phys. 126 (2019) 105112
+- Xiaowang Wang, Shuozhi Xu, Wu-Rong Jian, Xiang-Guo Li, Yanqing Su, Irene J. Beyerlein, [Generalized stacking fault energies and Peierls stresses in refractory body-centered cubic metals from machine learning-based interatomic potentials](http://dx.doi.org/10.1016/j.commatsci.2021.110364), Comput. Mater. Sci. 192 (2021) 110364
 
-\[Random alloys\]:
+\[Alloys\]:
 
-- Abdullah Al Mamun, Shuozhi Xu, Xiang-Guo Li, Yanqing Su, [Comparing interatomic potentials in calculating basic structural parameters and Peierls stress in tungsten-based random binary alloys](http://dx.doi.org/10.1088/1402-4896/acf533), Phys. Scr. 98 (2023) 105923
-- Shuozhi Xu, Arjun S. Kulathuvayal, Liming Xiong, Yanqing Su, [Effects of ferromagnetism in ab initio calculations of basic structural parameters of Fe-A (A = Mo, Nb, Ta, V, or W) random binary alloys](http://dx.doi.org/10.1140/epjb/s10051-022-00431-9), Eur. Phys. J. B 95 (2022) 167
 - Rebecca A. Romero, Shuozhi Xu, Wu-Rong Jian, Irene J. Beyerlein, C.V. Ramana, [Atomistic calculations of the local slip resistances in four refractory multi-principal element alloys](http://dx.doi.org/10.1016/j.ijplas.2021.103157), Int. J. Plast. 149 (2022) 103157
-- Shuozhi Xu, Saeed Zare Chavoshi, Yanqing Su, [On calculations of basic structural parameters in multi-principal element alloys using small atomistic models](http://dx.doi.org/10.1016/j.commatsci.2021.110942), Comput. Mater. Sci. 202 (2022) 110942
-
-\[Alloys with CSRO\]:
-
 - Shuozhi Xu, Wu-Rong Jian, Irene J. Beyerlein, [Ideal simple shear strengths of two HfNbTaTi-based quinary refractory multi-principal element alloys](http://dx.doi.org/10.1063/5.0116898), APL Mater. 10 (2022) 111107
 
 ## LAMMPS
 
-LAMMPS on [OSCER](http://www.ou.edu/oscer.html) likely does not come with many packages. To build more packages into LAMMPS, please visit [this page](https://docs.lammps.org/Build_package.html).
+LAMMPS on [OSCER](http://www.ou.edu/oscer.html) likely does not come with many packages. To finish this project, the [MLIP](https://mlip.skoltech.ru) package is needed.
 
-To finish this project, at least three packages are needed.
+To install LAMMPS with MLIP, follow these steps:
 
-- MANYBODY package. This is to use the manybody potential such as the embedded-atom method potential.
-- EXTRA-COMPUTE package. This is to calculate the elastic constants at finite temperatures using the Born matrix method. To learn more, please visit [this page](https://docs.lammps.org/Howto_elastic.html
-) and [this page](https://docs.lammps.org/compute_born_matrix.html).
-- MC package. This is to generate materials with chemical short-range order at a given temperature. [This paper](http://dx.doi.org/10.1103/PhysRevB.85.184203) should be cited if one uses this package.
+1. [Install MLIP](https://gitlab.com/ashapeev/mlip-2-tutorials/-/wikis/installation-tutorial)
+2. [Install the LAMMPS-MLIP interface and LAMMPS](https://gitlab.com/ashapeev/interface-lammps-mlip-2)
 
-Note: if we use sbatch files from [LAMMPSatOU](https://github.com/ANSHURAJ11/LAMMPSatOU), we may want to change the walltime (default: 12 hours) and/or number of cores (default: 16). For this project, we use
+Note: if we use sbatch files from [LAMMPSatOU](https://github.com/ANSHURAJ11/LAMMPSatOU), we may want to change the walltime (default: 12 hours) and/or number of cores (default: 16). For this project, let's use
 
-	#SBATCH --time=200:00:00
+	#SBATCH --time=48:00:00
 	#SBATCH --ntasks=32
 
 Each time we run a new type of simulation, create a new directory.
 
-Four MPEAs will be considered.
+## Ternaries
 
-## CoCrNi
+### MoNbTa
 
-Note: All files for calculations can be found in the `CoCrNi` directory in this GitHub repository, except the data files which can be [here](https://drive.google.com/drive/folders/13xaI274U-xIsBN8h_TY_eohsXxedEwFE?usp=sharing). The reason is that the data files are too large for GitHub.
+#### Lattice parameter
 
-All data files are from [this paper](http://dx.doi.org/10.1016/j.actamat.2020.08.044).
+Run a LAMMPS simulation with files `lmp_0K.in`, `fitted.mtp`, and `mlip.ini`. The first file can be found in the `ternary/lat_para/` directory in this GitHub repository. The other two files can be found in the `MTP/` directory in this GitHub repository.
 
-### Lattice parameters at 0 K
+Once it is finished, we will find a new file `a_E`. The first column is the ratio of the trial lattice parameter to 3.3, the second column is the trial lattice parameter itself, in units of Angstrom, the thrid column is the cohesive energy, in units of eV. If we plot a curve with the second column as the _x_ axis and the third column as the _y_ axis, the curve should look like the ones in Figure 1(a) of [this paper](http://dx.doi.org/10.1016/j.commatsci.2021.110942).
 
-#### Random CoCrNi
+Then run `sh min.sh` to find out the trial lattice parameter corresponding to the lowest cohesive energy (i.e., the minimum on that curve), and that would be the actual lattice parameter. Specifically, we will see three numbers on the screen. The second number is the actual lattice parameter of MoNbTa.
 
-Run the simulation with files `lmp_0K.in`, `min.CoCrNi_27nmx_27nmy_27nmz_random.dat`, and `CoCrNi.lammps.eam`.
+#### GSFE
 
-Once it is finished, we will find a new file `a_E`. The first column is the ratio of the trial lattice parameter to 3.5564, the second column is the trial lattice parameter itself, in units of Angstrom, the thrid column is the cohesive energy, in units of eV. If we plot a curve with the second column as the x axis and the third column as the y axis, the curve should look like the ones in Figure 1(a) of [this paper](http://dx.doi.org/10.1016/j.commatsci.2021.110942).
-
-Then run `sh min.sh` to find out the trial lattice parameter corresponding to the lowest cohesive energy (i.e., the minimum on that curve), and that would be the actual lattice parameter. Specifically, we will see
-
-	1 3.55644549888703 -4.32151351854507
-
-on the screen. Record these three numbers. These are for random CoCrNi.
-
-#### CoCrNi with CSRO
+##### Plane 1
 
 The simulation requires files 
-`lmp_0K.in`, `min.CoCrNi_27nmx_27nmy_27nmz_350KMDMC.dat`, and `CoCrNi.lammps.eam`. Make one change in `lmp_lat.in`:
-
-- Line 10. Change the word `random` to `350KMDMC`, i.e., to match the new data file's name.
+`lmp_gsfe.in`, `fitted.mtp`, and `mlip.ini`. The first file can be found in the `ternary/gsfe/` directory in this GitHub repository.
 
 Run the simulation. Once it is finished, we will find a new file `a_E`. The first column is the ratio of the trial lattice parameter to 3.561; the other two columns have the same meaning as the random case. Repeat the remaining steps in the random case and record the three numbers for the CoCrNi with CSRO.
+
+##### Other planes
 
 ### Elastic constants at 0 K
 
