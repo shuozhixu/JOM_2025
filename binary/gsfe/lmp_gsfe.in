@@ -33,9 +33,8 @@ mass 3 50.9415
 mass 4 95.94
 mass 5 183.84
 
-create_atoms    1 box
-set type 1 type/ratio 2 0.3333 134
-set type 1 type/ratio 4 0.5 384
+create_atoms    2 box
+set type 2 type/ratio 4 0.99 134
 
 # ------------------- FIELD DEFINE -----------------------------
 pair_style        mlip mlip.ini
