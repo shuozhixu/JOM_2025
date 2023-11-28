@@ -8,7 +8,7 @@ The 10 ternaries are listed in Table 1 of [this paper](https://doi.org/10.1016/j
 
 The 990 binaries include
 
-- 99 binaries based on Mo<sub>_x_</sub>Nb<sub>_1-x_</sub>, where _x_ varies from 0.01 to 0.99
+- 99 binaries based on Mo<sub>_1-x_</sub>Nb<sub>_x_</sub>, where _x_ varies from 0.01 to 0.99
 - other combinations of metals, including MoTa, MoV, MoW, NbTa, NbV, NbW, TaV, TaW, and VW
 
 Please read the journal articles in the reference list to understand how the generalized stacking fault energy (GSFE) curves and their peak values (i.e., USFEs) can be calculated in BCC metals and alloys.
