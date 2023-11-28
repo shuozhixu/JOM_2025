@@ -2,11 +2,11 @@
 #
 #SBATCH --partition=cm3atou
 #SBATCH --nodes=1
-#SBATCH --ntasks=32
+#SBATCH --ntasks=4
 #SBATCH --job-name=lat_para
 #SBATCH --output=lat_para.out
 #SBATCH --error=lat_para.err
-#SBATCH --time=48:00:00
+#SBATCH --time=1:00:00
 #SBATCH --mail-user=youremailaddress@yourinstitution.edu
 #SBATCH --mail-type=ALL
 #
