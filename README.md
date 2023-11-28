@@ -27,7 +27,7 @@ To install LAMMPS with MLIP, cd to any directory on OSCER, e.g., \$HOME, then
 
 Once it is finished, you should find a file `lmp_intel_cpu_intelmpi` in the `lammps-mtp/interface-lammps-mlip-2/` directory. And that is the LAMMPS executable with MLIP.
 
-In practice, with 4 CPU cores, each lattice parametr calculation and GSFE calculation takes about 10 mins and 1 min, respectively.
+In practice, with 4 CPU cores, each lattice parametr calculation and GSFE calculation takes about 15 mins and 1 min, respectively.
 
 Each time we run a new type of simulation, create a new directory.
 
