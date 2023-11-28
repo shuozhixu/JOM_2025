@@ -15,7 +15,7 @@ Please read the journal articles in the reference list to understand how the gen
 
 Note: Pay attention to the amount of data in your \$HOME. They can build up quickly. Once the data exceeds 20 GB, you won't be able to run anything. In addition, it may be wise to figure out how to run those high-throughput simulations automatically, e.g., using [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)), as opposed to manually making changes to the files.
 
-Note: Our collaborators in this project will be [Dr. Xiang-Guo Li](https://scholar.google.com/citations?user=_lTAEWgAAAAJ&hl=en) and his student Tianyi Wang at the Sun Yat-sen University in China. They have graciously shared with us their unpublised ML-based interatomic potential and have calculated the USFEs in one quinary MoNbTaVW and five quaternaries: MoNbTaV, MoNbTaW, MoNbVW, MoTaVW, and NbTaVW. We can include their data when training our ML model.
+Note: Our collaborators in this project will be [Dr. Xiang-Guo Li](https://scholar.google.com/citations?user=_lTAEWgAAAAJ&hl=en) and his student Tianyi Wang at the Sun Yat-sen University in China. They have graciously shared with us their unpublished ML-based interatomic potential and have calculated the USFEs in one quinary MoNbTaVW and five quaternaries: MoNbTaV, MoNbTaW, MoNbVW, MoTaVW, and NbTaVW. We can include their data when training our ML model.
 
 ## LAMMPS
 
