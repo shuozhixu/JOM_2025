@@ -47,10 +47,12 @@ neigh_modify    delay   10
 thermo          1000
 thermo_style    custom step etotal
 
-variable        tmp0 equal "zlo+6"      ##### 8>5.8799999999999999 (potential cutoff), variable
-variable        zlo0 equal ${tmp0}
-variable        tmp1 equal "zhi-6"
-variable        zhi0 equal ${tmp1}
+variable        fixz equal ${latparam}/sqrt(2.)*1.5
+
+variable        tmp0 equal "zlo"      ##### 8>5.8799999999999999 (potential cutoff), variable
+variable        zlo0 equal ${tmp0}+${fixz}
+variable        tmp1 equal "zhi"
+variable        zhi0 equal ${tmp1}-${fixz}
 variable        tmp2 equal "(zlo+zhi)/2"
 variable        zmid equal ${tmp2}
 
