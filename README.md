@@ -25,7 +25,9 @@ To install LAMMPS with MLIP, use the file `MLIP.sh` in the `MTP/` directory in t
 
 	sh MLIP.sh
 
-Once it is finished, you should find a file `lmp_intel_cpu_intelmpi` in the `lammps-mtp/interface-lammps-mlip-2/` directory. And that is the LAMMPS executable with MLIP.
+Note that the second command in `MLIP.sh` will load a module. If you cannot load it, try `module purge` first.
+
+Once the `sh` run is finished, you should find a file `lmp_intel_cpu_intelmpi` in the `lammps-mtp/interface-lammps-mlip-2/` directory. And that is the LAMMPS executable with MLIP.
 
 In practice, with 4 CPU cores, each lattice parametr calculation and GSFE calculation takes about 15 mins and 1 min, respectively.
 
