@@ -21,7 +21,7 @@ Note: Our collaborators in this project will be [Dr. Xiang-Guo Li](https://schol
 
 LAMMPS on [OSCER](http://www.ou.edu/oscer.html) likely does not come with many packages. To finish this project, the [MLIP](https://mlip.skoltech.ru) package is needed.
 
-To install LAMMPS with MLIP, cd to any directory on OSCER, e.g., \$HOME, then
+To install LAMMPS with MLIP, use the file `MLIP.sh` in the `MTP/` directory in this GitHub repository. First, cd to any directory on OSCER, e.g., \$HOME, then
 
 	sh MLIP.sh
 
