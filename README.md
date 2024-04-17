@@ -41,7 +41,7 @@ All 10 ternaries are equal-molar.
 
 #### Lattice parameter
 
-Run a LAMMPS simulation with files `lmp_0K.in`, `lmp.batch`, `fitted.mtp`, and `mlip.ini`. The first two files can be found in the `ternary/lat_para/` directory in this GitHub repository. The other two files can be found in the `MTP/` directory in this GitHub repository. Submit the job by
+Run a LAMMPS simulation with files `lmp_0K.in`, `lmp.batch`, `fitted.mtp`, and `mlip.ini`. The first two files can be found in the `ternary/lat_para/` directory in this GitHub repository. The other two files, retrieved from [another GitHub repository](https://github.com/ucsdlxg/MoNbTaVW-ML-interatomic-potential-and-CRSS-ML-model), can be found in the `MTP/` directory in this GitHub repository. Submit the job by
 
 	sbatch lmp.batch
 
