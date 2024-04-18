@@ -16,7 +16,7 @@ ssh schooner.oscer.ou.edu
 
 cd ${SLURM_SUBMIT_DIR}
 
-rm -f dump.* plot.out
+rm -f a_E
 
 #module load intel/18
 #module load LAMMPS/11Aug17-gompi-2017b
