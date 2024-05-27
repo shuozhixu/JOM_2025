@@ -2,20 +2,20 @@
 
 ## Foreword
 
-The purpose of this project is to calculate the unstable stacking fault energies (USFEs) of 10 ternaries and 990 binaries. All alloys have a body-centered cubic (BCC) lattice. For each alloy, we need to run 20 LAMMPS simulations. Therefore, in total 20,000 LAMMPS simulations are needed. Then we can try training a machine learning model to predict these energies from chemical compositions. It would also be interesting to check how the USFE gradually varies with the composition in each set of binaries.
+The purpose of this project is to calculate the unstable stacking fault energies (USFEs) of 5 pure metals, 990 binaries, 10 ternaries, 5 quaternaries, and 1 quinary. USFE is the peak value of the generalized stacking fault energy (GSFE) curve.
 
-The 10 ternaries are listed in Table 1 of [this paper](https://doi.org/10.1016/j.jallcom.2023.170556).
+All materials have a body-centered cubic (BCC) lattice. For each pure metal, we need to run 1 LAMMPS simulation. For each alloy, we need to run 20 LAMMPS simulations. Therefore, in total 20,125 LAMMPS simulations are needed. Then we will train a machine learning model to predict these energies from chemical compositions. It would also be interesting to check how the USFE gradually varies with the composition in each set of binaries.
+
+The 10 ternaries, 5 quaternaries, and 1 quinary are listed in Table 1 of [this paper](https://doi.org/10.1016/j.jallcom.2023.170556).
 
 The 990 binaries include
 
 - 99 binaries based on Mo<sub>_1-x_</sub>Nb<sub>_x_</sub>, where _x_ varies from 0.01 to 0.99
 - other combinations of metals, including MoTa, MoV, MoW, NbTa, NbV, NbW, TaV, TaW, and VW
 
-Please read the journal articles in the reference list to understand how the generalized stacking fault energy (GSFE) curves and their peak values (i.e., USFEs) can be calculated in BCC metals and alloys.
+Note: Pay attention to the amount of data in our \$HOME. They can build up quickly. Once the data exceeds 20 GB, we won't be able to run anything. In addition, it may be wise to figure out how to run those high-throughput simulations automatically, e.g., using [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)), as opposed to manually making changes to the files.
 
-Note: Pay attention to the amount of data in your \$HOME. They can build up quickly. Once the data exceeds 20 GB, you won't be able to run anything. In addition, it may be wise to figure out how to run those high-throughput simulations automatically, e.g., using [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)), as opposed to manually making changes to the files.
-
-Note: Our collaborators in this project will be [Dr. Xiang-Guo Li](https://scholar.google.com/citations?user=_lTAEWgAAAAJ&hl=en) and his student Tianyi Wang at the Sun Yat-sen University in China. They have graciously shared with us their unpublished ML-based interatomic potential and have calculated the USFEs in one quinary MoNbTaVW and five quaternaries: MoNbTaV, MoNbTaW, MoNbVW, MoTaVW, and NbTaVW. We can include their data when training our ML model.
+[//]: # (Note: Our collaborators in this project will be [Dr. Xiang-Guo Li]https://scholar.google.com/citations?user=_lTAEWgAAAAJ&hl=en and his student Tianyi Wang at the Sun Yat-sen University in China. They have graciously shared with us their unpublished ML-based interatomic potential and have calculated the USFEs in one quinary MoNbTaVW and five quaternaries: MoNbTaV, MoNbTaW, MoNbVW, MoTaVW, and NbTaVW. We can include their data when training our ML model.)
 
 ## LAMMPS
 
@@ -25,9 +25,9 @@ To install LAMMPS with MLIP, use the file `MLIP.sh` in the `MTP/` directory in t
 
 	sh MLIP.sh
 
-Note that the second command in `MLIP.sh` will load a module. If you cannot load it, try `module purge` first.
+Note that the second command in `MLIP.sh` will load a module. If one cannot load it, try `module purge` first.
 
-Once the `sh` run is finished, you should find a file `lmp_intel_cpu_intelmpi` in the `lammps-mtp/interface-lammps-mlip-2/` directory on OSCER. And that is the LAMMPS executable with MLIP.
+Once the `sh` run is finished, we should find a file `lmp_intel_cpu_intelmpi` in the `lammps-mtp/interface-lammps-mlip-2/` directory on OSCER. And that is the LAMMPS executable with MLIP.
 
 In practice, with 4 CPU cores, each lattice parametr calculation and GSFE calculation takes about 15 mins and 1 min, respectively.
 
@@ -136,10 +136,12 @@ For the next binary, Mo<sub>0.98</sub>Nb<sub>0.02</sub>, those two lines should 
 
 Follow the same procedures, we can calculate the lattice parameters and mean USFE values in all other binaries. Don't forget to modify the LAMMPS input files accordingly for each alloy.
 
-## References
+## Quaternaries and quinary
+
+All quaternaries and quinary are equal-molar. Their lattice parameters and GSFEs can be calculated using a similar approach as above.
+
+## Reference
 
 If you use any files from this GitHub repository, please cite
 
-- Xiaowang Wang, Shuozhi Xu, Wu-Rong Jian, Xiang-Guo Li, Yanqing Su, Irene J. Beyerlein, [Generalized stacking fault energies and Peierls stresses in refractory body-centered cubic metals from machine learning-based interatomic potentials](http://dx.doi.org/10.1016/j.commatsci.2021.110364), Comput. Mater. Sci. 192 (2021) 110364
-- Rebecca A. Romero, Shuozhi Xu, Wu-Rong Jian, Irene J. Beyerlein, C.V. Ramana, [Atomistic calculations of the local slip resistances in four refractory multi-principal element alloys](http://dx.doi.org/10.1016/j.ijplas.2021.103157), Int. J. Plast. 149 (2022) 103157
 - Shuozhi Xu, Wu-Rong Jian, Irene J. Beyerlein, [Ideal simple shear strengths of two HfNbTaTi-based quinary refractory multi-principal element alloys](http://dx.doi.org/10.1063/5.0116898), APL Mater. 10 (2022) 111107
