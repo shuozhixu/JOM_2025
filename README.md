@@ -13,6 +13,8 @@ The 990 binaries include
 - 99 binaries based on Mo<sub>_1-x_</sub>Nb<sub>_x_</sub>, where _x_ varies from 0.01 to 0.99
 - other combinations of metals, including MoTa, MoV, MoW, NbTa, NbV, NbW, TaV, TaW, and VW
 
+The interatomic potential was developed by [Wang et al.](https://doi.org/10.1038/s41524-024-01330-6)
+
 Note: Pay attention to the amount of data in our \$HOME. They can build up quickly. Once the data exceeds 20 GB, we won't be able to run anything. In addition, it may be wise to [run those high-throughput simulations automatically](https://github.com/RichardBrinlee/USFE25_high_throughput), as opposed to manually making changes to the files.
 
 [//]: # (Note: Our collaborators in this project will be [Dr. Xiang-Guo Li]https://scholar.google.com/citations?user=_lTAEWgAAAAJ&hl=en and his student Tianyi Wang at the Sun Yat-sen University in China. They have graciously shared with us their unpublished ML-based interatomic potential and have calculated the USFEs in one quinary MoNbTaVW and five quaternaries: MoNbTaV, MoNbTaW, MoNbVW, MoTaVW, and NbTaVW. We can include their data when training our ML model.)
