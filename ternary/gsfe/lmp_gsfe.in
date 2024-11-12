@@ -16,7 +16,7 @@ atom_style      atomic
 variable        latparam equal 3.3             #variable
 
 variable        xl equal 0
-variable        xh equal 2
+variable        xh equal 3
 variable        yl equal 0
 variable        yh equal 2
 variable        zl equal 0
