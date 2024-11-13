@@ -64,7 +64,7 @@ group		lobound region lobound
 group		boundary union lobound upbound
 group		mobile subtract all boundary
 
-variable        d equal 10.5
+variable        d equal 9.5
 variable        mid equal ${zmid}+${latparam}/sqrt(2.)*(${d}-10)
 
 region		upper block INF INF INF INF ${mid} INF units box      #variable
