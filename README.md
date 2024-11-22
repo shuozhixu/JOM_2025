@@ -17,8 +17,6 @@ The interatomic potential was developed by [Wang et al.](https://doi.org/10.1038
 
 Note: Pay attention to the amount of data in our \$HOME. They can build up quickly. Once the data exceeds 20 GB, we won't be able to run anything. In addition, it may be wise to [run those high-throughput simulations automatically](https://github.com/RichardBrinlee/USFE25_high_throughput), as opposed to manually making changes to the files.
 
-[//]: # (Note: Our collaborators in this project will be [Dr. Xiang-Guo Li]https://scholar.google.com/citations?user=_lTAEWgAAAAJ&hl=en and his student Tianyi Wang at the Sun Yat-sen University in China. They have graciously shared with us their unpublished ML-based interatomic potential and have calculated the USFEs in one quinary MoNbTaVW and five quaternaries: MoNbTaV, MoNbTaW, MoNbVW, MoTaVW, and NbTaVW. We can include their data when training our ML model.)
-
 ## LAMMPS
 
 LAMMPS on [OSCER](http://www.ou.edu/oscer.html) likely does not come with many packages. To finish this project, the [MLIP](https://mlip.skoltech.ru) package is needed.
