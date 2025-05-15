@@ -1,4 +1,4 @@
-# Unstable stacking fault energies in refractory random alloys
+# Refractory non-dilute random alloys
 
 ## Foreword
 
