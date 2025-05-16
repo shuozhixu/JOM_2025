@@ -1,4 +1,4 @@
-# Refractory non-dilute random alloys
+# Refractory non-dilute random alloys: Lattice parameters and unstable stacking fault energies
 
 ## Foreword
 
@@ -139,6 +139,10 @@ Follow the same procedures, we can calculate the lattice parameters and mean USF
 ## Quaternaries and quinary
 
 All quaternaries and quinary are equal-molar. Their lattice parameters and GSFEs can be calculated using a similar approach as above.
+
+## Machine learning models
+
+Based on all data, we then train one ore more machine learning (ML) models, which can be found in [another GitHub repository](https://github.com/RichardBrinlee/Material-research). The inputs of the ML models include (i) properties of pure metals and (ii) chemical compositions of alloys. The outputs of the ML models are the properties of alloys.
 
 ## Reference
 
