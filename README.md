@@ -10,7 +10,7 @@ The 10 ternaries, 5 quaternaries, and 1 quinary are listed in Table 1 of [this p
 
 The 990 binaries include
 
-- 99 binaries based on Mo<sub>_1-x_</sub>Nb<sub>_x_</sub>, where _x_ varies from 0.01 to 0.99
+- 99 binaries based on Mo<sub>x</sub>Nb<sub>_1-x_</sub>, where _x_ varies from 0.01 to 0.99
 - other combinations of metals, including MoTa, MoV, MoW, NbTa, NbV, NbW, TaV, TaW, and VW
 
 The interatomic potential was developed by [Wang et al.](https://doi.org/10.1038/s41524-024-01330-6)
