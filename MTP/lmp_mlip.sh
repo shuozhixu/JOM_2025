@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 rm -rf lammps-mtp
-module load intel/2020a
+module load intel/2023a
 mkdir lammps-mtp
 cd lammps-mtp
 git clone https://gitlab.com/ashapeev/mlip-2.git

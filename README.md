@@ -21,11 +21,11 @@ Note: Pay attention to the amount of data in our \$HOME. They can build up quick
 
 LAMMPS on [OSCER](http://www.ou.edu/oscer.html) likely does not come with many packages. To finish this project, the [MLIP](https://mlip.skoltech.ru) package is needed.
 
-To install LAMMPS with MLIP, use the file `MLIP.sh` in the `MTP/` directory in this GitHub repository. First, cd to any directory on OSCER, e.g., \$HOME, then
+To install LAMMPS with MLIP, use the file `lmp_mlip.sh` in the `MTP/` directory in this GitHub repository. First, cd to any directory on OSCER, e.g., \$HOME, then
 
-	sh MLIP.sh
+	sh lmp_mlip.sh
 
-Note that the second command in `MLIP.sh` will load a module. If one cannot load it, try `module purge` first.
+Note that the second and third commands in `lmp_mlip.sh` will load modules. If one cannot load them, try `module purge` first.
 
 Once the `sh` run is finished, we should find a file `lmp_intel_cpu_intelmpi` in the `lammps-mtp/interface-lammps-mlip-2/` directory on OSCER. And that is the LAMMPS executable with MLIP.
 
